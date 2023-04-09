@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wireframe Project</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  </head>
+  <style>
+.card-title {
+  color: black;
+text-align: center
+}
+.card-text {
+  text-align: center;
+  color: blue;
+  font-size: 12px;
+}
+p {
+color: black;
+text-align: center;
+margin: 1 0 0px;
+font-size: 22px
+}
+.card {
+  margin-top: 5px
+  }
+.btn btn-primary {
+  margin:0 0 0px;
+  }
+</style>
+  <body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      
+        <div class="card" style="width: 14rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 id="temperature"></h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 55%</strong>
+           <br>
+           <p id="city"></p>
+           <p id="date"></p>
+          </p>
+             <form class="search-form" id="search-form">
+      <input 
+      type="search" 
+      placeholder="Enter a City"
+      autofocus="on"
+      autocomplete="off"
+      id="city-input"
+      
+      />
+      <input type="submit" value="Search" />
+    </form>
+        </div>
+      
+      </div>
+    </div>
+    <div class="col-sm">
+      
+        <div class="card" style="width: 11rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 class="card-title">Friday 51°</h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 15%</strong>
+           <br>
+           <br>
+          
+          </p>
+        </div>
+        
+      </div>
+    </div>
+    <div class="col-sm">
+     
+        <div class="card" style="width: 11rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 class="card-title">Saturday 44°</h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 25%</strong>
+           <br>
+           <br>
+           
+          </p>
+        </div>
+           
+      </div>
+    </div>
+      <div class="col-sm">
+    
+       <div class="card" style="width: 11rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 class="card-title">Sunday 46°</h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 35%</strong>
+           <br>
+           <br>
+           
+          </p>
+        </div>
+            
+      </div>
+    </div>
+    <div class="col-sm">
+      
+    <div class="card" style="width: 11rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 class="card-title">Monday 53°</h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 10%</strong>
+           <br>
+           <br>
+          </p>
+        </div>
+       
+      </div>
+    </div>
+    <div class="col-sm">
+      
+      <div class="card" style="width: 11rem">
+        <img src="https://i.pinimg.com/originals/9e/76/44/9e76440e228671d77b9afc06887fab3c.png" class="card-img-top" alt="sun and clouds" />
+        <div class="card-body">
+          <h5 class="card-title">Tuesday 52°</h5>
+          <p class="card-text">
+           <strong>Chance of Snow: 55%</strong>
+           <br>
+           <br>
+          </p>
+        </div>
+         
+      </div>
+    </div>
+    <div class="col-sm">
+    </div>
+  </div>
+</div>
+<script>
+function formatDate(date) {
+  let hours = date.getHours();
+if (hours < 10) {
+  hours = `0${hours}`;
+}
+let minutes = date.getMinutes();
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
+
+let dayIndex = date.getDay(); 
+let days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+let day = days[dayIndex];
+
+  return `${day} ${hours}:${minutes}`
+}  
+
+
+function search(event) {
+event.preventDefault();
+let cityElement = document.querySelector("#city")
+let cityInput = documnent.querySelector("#city-input");
+cityElement.innerHTML = cityInput.value;
+}
+ 
+let dateElement = document.querySelector("#date");
+let currentTime = new Date();
+let searchForm = document.querySelector("#search-form");
+
+searchForm.addEventListener("submit", search);
+
+dateElement.innerHTML = formatDate(currentTime);
+
+let apiKey = "1819d5a44a288deaad951697832ebba0";
+let units = "metric";
+let city = "Chicago";
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+
+axios.get(apiUrl).then(displayWeatherCondition);
+
+</script>
+  </body>
+</html>
