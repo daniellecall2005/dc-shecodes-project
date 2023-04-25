@@ -9,7 +9,11 @@ p {
   margin: 0 0 0px;
 }
 
-.displayWeatherCondition .active {
+.displayWeatherCondition.active {
   color: red;
   cursor: default;
+}
+
+.moist {
+  list-style-type: none;
 }
