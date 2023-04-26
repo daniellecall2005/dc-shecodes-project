@@ -20,6 +20,34 @@ function formatDate(date) {
   let day = days[dayIndex];
   return `${day} ${hours}:${minutes}`;
 }
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  forecastElement.innerHTML = "";
+  <div class="weather-forecast" id="forecast">
+  <div class="row">
+    <div class="col-2">
+      <div class="weather-forecast-date">
+      Thursday
+      </div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Twemoji_1f346.svg/1200px-Twemoji_1f346.svg.png" 
+      alt="Penis"
+      width="40"
+      />
+      <div class="weather-forecast-temperature">
+       <span class="temp-max">666°</span>  
+       <span class="temp-min">69°</span>
+      </div>
+      <br>
+    </div>
+   </div>
+  </div>
+}
+
+
+
+
 function displayWeatherCondition(response) {
   console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
@@ -79,10 +107,11 @@ dateElement.innerHTML = formatDate(currentTime);
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-search("New York");
-
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", displayFahrenheitTemperature);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displaycelsiusTemperature);
+
+search("New York");
+displayForecast();
