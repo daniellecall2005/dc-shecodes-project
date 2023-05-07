@@ -7,7 +7,7 @@ function formatDate(date) {
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-  let dayIndex = date.getDay();
+
   let days = [
     "Sunday",
     "Monday",
@@ -17,11 +17,11 @@ function formatDate(date) {
     "Friday",
     "Saturday",
   ];
-  let day = days[dayIndex];
+  let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
 }
 
-function displayForecast(_response) {
+function displayForecast() {
   let forecastElement = document.querySelector("#forecast");
 
   let days = ["Thu", "Fri", "Sat", "Sun"];
