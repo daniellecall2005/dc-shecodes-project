@@ -27,23 +27,25 @@ function displayForecast(response) {
   let days = ["Thu", "Fri", "Sat", "Sun"];
 
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `
+  days.forEach(function (days, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
     <div class="col-2">
-      <div class="weather-forecast-date">${day}</div>
+      <div class="weather-forecast-date">${days}</div>
       <img
         src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Twemoji_1f346.svg/1200px-Twemoji_1f346.svg.png"
         alt="Penis"
         width="40"
       />
       <div class="weather-forecast-temperature">
-        <span class="temp-max">666°</span>
-        <span class="temp-min">69°</span>
+        <span class="temp-max">Max°</span>
+        <span class="temp-min">Min°</span>
       </div>
     </div>
   `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
